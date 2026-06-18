@@ -8,7 +8,7 @@ export default async function createRese(formDate:FormData){
     if(!session) return ;
     const date= formDate.get("date") as string;
     const time = formDate.get("time") as string;
-    const startTime = new Date(`${date}T${time}`)
+    const startTime = new Date(`${date}T${time}:00`)
 
      await prisma.reservation.create({
         data:{
