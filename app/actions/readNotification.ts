@@ -1,0 +1,10 @@
+"use server";
+import { prisma } from "@/lib/prisma";
+import { revalidatePath } from "next/cache";
+export default async function isRead(notificationId:string){
+    await prisma.notification.update({
+        where:{id:notificationId},
+        data:{isRead:true}
+    });
+    revalidatePath("/mypage")
+}
